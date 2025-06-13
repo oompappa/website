@@ -1,0 +1,182 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+
+african
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf6ec;
+    color: #2d1e2f;
+    background-image: url('https://www.transparenttextures.com/patterns/cloth.png');
+    /* subtle fabric texture */
+}
+
+header,
+footer {
+    background-color: #5e3c58;
+    color: #fce8d5;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #e28413;
+}
+
+nav a {
+    color: #fce8d5;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #e28413;
+    width: 0;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+main {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px double #5e3c58;
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    border: 3px solid #e28413;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(94, 60, 88, 0.2);
+}
+
+.card::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background: repeating-linear-gradient(45deg,
+            #e28413,
+            #e28413 10px,
+            #5e3c58 10px,
+            #5e3c58 20px);
+    margin-bottom: 10px;
+}
+
+form {
+    margin-top: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #5e3c58;
+    border-radius: 5px;
+    background-color: #fce8d5;
+    color: #2d1e2f;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #e28413;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #5e3c58;
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
