@@ -3,7 +3,7 @@
 $servername = "sql313.infinityfree.com";
 $username = "if0_39222676";
 $password = "Geescheck1";
-$dbname = "if0_39222676_XXX";
+$dbname = "if0_39222676_on_notebook_marketplace";
 
 //localhost info
 //$servername = "localhost";
