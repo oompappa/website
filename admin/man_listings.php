@@ -44,7 +44,10 @@ $result = $conn->query($sql);
 
 <body>
     <h1>Manage Listings</h1>
-    <a href="index.php">← Back to Dashboard</a>
+    <form action="index.php" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+    
     <table border="1" cellpadding="8">
         <tr>
             <th>ID</th>

@@ -10,26 +10,44 @@ include 'includes/db_connect.php';
     <title>Notebook Marketplace - Home</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0T9Z5MG6GT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0T9Z5MG6GT');
+</script>
 
 <body>
     <header>
         <h1>Welcome to Notebook Marketplace</h1>
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <!-- logged in, this shows listing and logout options -->
+                <!-- logged in: shows listing and logout options -->
                 <form action="user/add_listing.php" method="get" style="display:inline;">
                     <button type="submit" class="nav-button">Post a New Listing</button>
                 </form>
                 <form action="user/logout.php" method="get" style="display:inline;">
                     <button type="submit" class="nav-button">Logout</button>
                 </form>
+                <form action="admin/index.php" method="get">
+                    <button type="submit">Admin Login</button>
+                </form>
             <?php else: ?>
-                <!-- not logged in, this shows register and login buttons -->
+                <!-- not logged in: shows register and login buttons -->
                 <form action="user/register.php" method="get" style="display:inline;">
                     <button type="submit" class="nav-button">Register</button>
                 </form>
                 <form action="user/login.php" method="get" style="display:inline;">
                     <button type="submit" class="nav-button">Login</button>
+                </form>
+                <form action="admin/index.php" method="get">
+                    <button type="submit">Admin Login</button>
                 </form>
             <?php endif; ?>
         </nav>
@@ -73,7 +91,7 @@ include 'includes/db_connect.php';
                 break;
         }
 
-        // query to fetch listings from db, using the dynamic ORDER BY
+        // query to fetch listings from db, ORDER BY
         $sql = "
       SELECT
         l.list_ID,
@@ -82,6 +100,7 @@ include 'includes/db_connect.php';
         l.description,
         l.image,
         l.date_posted,
+        l.seller_ID,
         u.username AS seller_name
       FROM listings AS l
       JOIN users AS u
@@ -122,7 +141,36 @@ include 'includes/db_connect.php';
                         <em>Posted by:</em> <?php echo $seller; ?><br>
                         <em>On:</em> <?php echo $date; ?>
                     </p>
+
+                    <?php if (isset($_SESSION['user_id'])): ?>
+
+                        <div class="button-group">
+
+                            <!-- Buy Now button -->
+                            <form method="get" action="user/checkout.php">
+                                <input type="hidden" name="list_ID" value="<?php echo $row['list_ID']; ?>">
+                                <button type="submit">Buy Now</button>
+                            </form>
+
+
+                            <!-- Message Seller button -->
+                            <?php if ($_SESSION['user_id'] != $row['seller_ID']): ?>
+                                <form method="get" action="user/message.php">
+                                    <input type="hidden" name="seller_id" value="<?php echo $row['seller_ID']; ?>">
+                                    <input type="hidden" name="product_name" value="<?php echo urlencode($productName); ?>">
+                                    <button type="submit">Message Seller</button>
+                                </form>
+                            <?php endif; ?>
+
+                        </div>
+
+                    <?php else: ?>
+                        <p><em>Login to buy this product.</em></p>
+                    <?php endif; ?>
+
                 </div>
+
+
 
         <?php
             } // end while

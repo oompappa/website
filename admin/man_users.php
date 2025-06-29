@@ -38,7 +38,9 @@ $result = $conn->query("SELECT user_ID, f_name, l_name, username, email, user_ty
 
 <body>
     <h1>Manage Users</h1>
-    <a href="index.php">← Back to Dashboard</a>
+    <form action="index.php" method="get">
+        <button type="submit">Back to Dashboard</button>
+    </form>
     <table border="1" cellpadding="8">
         <tr>
             <th>ID</th>
